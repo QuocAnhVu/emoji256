@@ -13,11 +13,10 @@
 //! # assert_eq!(hello_world, "🐙👽💉💉💌🍭💦💌💕💉👻🍰");
 //! ```
 
-#![doc(html_root_url = "https://docs.rs/emoji256/0.2.0")]
+#![doc(html_root_url = "https://docs.rs/emoji256/0.2.1")]
 #![cfg_attr(not(feature = "std"), no_std)]
 #![cfg_attr(docsrs, feature(doc_cfg))]
 #![allow(clippy::unreadable_literal)]
-#![feature(slice_as_chunks)]
 
 #[cfg(feature = "alloc")]
 extern crate alloc;
