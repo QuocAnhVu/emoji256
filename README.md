@@ -6,8 +6,8 @@
 [![codecov-svg]][codecov-url]
 [![deps-svg]][deps-url]
 
-[ga-svg]: https://github.com/QuocAnhVu/emoji256/actions/workflows/main.yml/badge.svg
-[ga-url]: https://github.com/QuocAnhVu/emoji256/actions/workflows/main.yml
+[ga-svg]: https://github.com/QuocAnhVu/emoji256/actions/workflows/build.yml/badge.svg
+[ga-url]: https://github.com/QuocAnhVu/emoji256/actions/workflows/build.yml
 [crates-svg]: https://img.shields.io/crates/v/emoji256.svg
 [crates-url]: https://crates.io/crates/emoji256
 [docs-svg]: https://docs.rs/emoji256/badge.svg

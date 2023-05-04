@@ -10,7 +10,7 @@ license = "MIT OR Apache-2.0"
 name = "emoji256"
 readme = "README.md"
 repository = "https://github.com/QuocAnhVu/emoji256"
-version = "0.2.1"
+version = "0.2.2"
 [package.metadata.docs.rs]
 all-features = true
 rustdoc-args = ["--cfg", "docsrs"]
