@@ -1,10 +1,11 @@
 [package]
 authors = ["Quoc-Anh Vu <quoc.v.anh@gmail.com>"]
 categories = ["encoding", "no-std"]
-description = "Encoding and decoding data into/from emoji256 representation."
+description = "A binary-to-text encoding scheme for hashes and cryptographic keys."
 documentation = "https://docs.rs/emoji256/"
 edition = "2021"
-keywords = ["no_std", "emoji256"]
+exclude = ["python/"]
+keywords = ["no_std", "emoji256", "binary-to-text", "emoji", "emojis"]
 license = "MIT OR Apache-2.0"
 name = "emoji256"
 readme = "README.md"
