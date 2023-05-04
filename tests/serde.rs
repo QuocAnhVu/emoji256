@@ -16,7 +16,7 @@ fn serialize() {
     };
 
     let ser = serde_json::to_string(&foo).expect("serialization failed");
-    assert_eq!(ser, r#"{"bar":"🌈🌷💚"}"#);
+    assert_eq!(ser, r#"{"bar":"🌈🌵👺"}"#);
 }
 
 #[test]
@@ -25,7 +25,7 @@ fn deserialize() {
         bar: vec![1, 10, 100],
     };
 
-    let de: Foo = serde_json::from_str(r#"{"bar":"🌈🌷💚"}"#).expect("deserialization failed");
+    let de: Foo = serde_json::from_str(r#"{"bar":"🌈🌵👺"}"#).expect("deserialization failed");
     assert_eq!(de, foo);
 }
 
@@ -45,7 +45,7 @@ fn serialize_upper() {
     };
 
     let ser = serde_json::to_string(&bar).expect("serialization failed");
-    assert_eq!(ser, r#"{"foo":"🌈🌷💚"}"#);
+    assert_eq!(ser, r#"{"foo":"🌈🌵👺"}"#);
 }
 
 #[test]
@@ -54,6 +54,6 @@ fn deserialize_upper() {
         foo: vec![1, 10, 100],
     };
 
-    let de: Bar = serde_json::from_str(r#"{"foo":"🌈🌷💚"}"#).expect("deserialization failed");
+    let de: Bar = serde_json::from_str(r#"{"foo":"🌈🌵👺"}"#).expect("deserialization failed");
     assert_eq!(de, bar);
 }

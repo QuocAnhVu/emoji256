@@ -9,8 +9,8 @@
 //! # #[cfg(feature = "alloc")]
 //! let hello_world = emoji256::encode("Hello world!");
 //!
-//! println!("{}", hello_world); // Prints "👊💛💣💣💦🍻💸💦💩💣💚🍼"
-//! # assert_eq!(hello_world, "👊💛💣💣💦🍻💸💦💩💣💚🍼");
+//! println!("{}", hello_world); // Prints "🐘👻💅💅💋🍫💥💋💔💅👺🍭"
+//! # assert_eq!(hello_world, "🐘👻💅💅💋🍫💥💋💔💅👺🍭");
 //! ```
 
 #![doc(html_root_url = "https://docs.rs/emoji256/0.1.0")]
@@ -50,8 +50,8 @@ pub use crate::serde::serialize;
 /// ```
 /// use emoji256::ToEmoji256;
 ///
-/// println!("{}", "Hello world!".encode_emoji256::<String>());  // prints "👊💛💣💣💦🍻💸💦💩💣💚🍼"
-/// # assert_eq!("Hello world!".encode_emoji256::<String>(), "👊💛💣💣💦🍻💸💦💩💣💚🍼");
+/// println!("{}", "Hello world!".encode_emoji256::<String>());  // prints "🐘👻💅💅💋🍫💥💋💔💅👺🍭"
+/// # assert_eq!("Hello world!".encode_emoji256::<String>(), "🐘👻💅💅💋🍫💥💋💔💅👺🍭");
 /// ```
 ///
 /// *Note*: instead of using this trait, you might want to use [`encode()`].
@@ -73,10 +73,10 @@ impl<T: AsRef<[u8]>> ToEmoji256 for T {
 /// # Example
 ///
 /// ```
-/// # assert_eq!(emoji256::encode("Hello world!"), "👊💛💣💣💦🍻💸💦💩💣💚🍼");
-/// emoji256::encode("Hello world!");  // => "👊💛💣💣💦🍻💸💦💩💣💚🍼"
-/// # assert_eq!(emoji256::encode(vec![1, 2, 3, 15, 16]), "🌈🌊🌙🌼🌿");
-/// emoji256::encode(vec![1, 2, 3, 15, 16]);  // => "🌈🌊🌙🌼🌿"
+/// # assert_eq!(emoji256::encode("Hello world!"), "🐘👻💅💅💋🍫💥💋💔💅👺🍭");
+/// emoji256::encode("Hello world!");  // => "🐘👻💅💅💋🍫💥💋💔💅👺🍭"
+/// # assert_eq!(emoji256::encode(vec![1, 2, 3, 15, 16]), "🌈🌊🌍🍁🍄");
+/// emoji256::encode(vec![1, 2, 3, 15, 16]);  // => "🌈🌊🌍🍁🍄"
 /// ```
 #[must_use]
 #[cfg(feature = "alloc")]
@@ -96,7 +96,7 @@ pub fn encode<T: AsRef<[u8]>>(data: T) -> String {
 /// # fn main() -> Result<(), FromEmoji256Error> {
 /// let mut bytes = [0u8; 4 * 4];
 /// emoji256::encode_to_slice(b"kiwi", &mut bytes)?;
-/// assert_eq!(&bytes, "💢💟💸💟".as_bytes());
+/// assert_eq!(&bytes, "💄💁💥💁".as_bytes());
 /// # Ok(())
 /// # }
 /// ```
@@ -127,7 +127,7 @@ pub fn encode_to_slice<T: AsRef<[u8]>>(
 /// use core::str;
 /// use emoji256::FromEmoji256;
 ///
-/// let buffer = <[u8; 12]>::from_emoji256("👊💛💣💣💦🍻💸💦💩💣💚🍼")?;
+/// let buffer = <[u8; 12]>::from_emoji256("🐘👻💅💅💋🍫💥💋💔💅👺🍭")?;
 /// let string = str::from_utf8(&buffer).unwrap();
 ///
 /// println!("{}", string); // prints "Hello world!"
@@ -216,10 +216,10 @@ from_emoji256_array_impl! {
 ///
 /// ```
 /// # assert_eq!(
-/// #     emoji256::decode("👊💛💣💣💦🍻💸💦💩💣💚🍼"),
+/// #     emoji256::decode("🐘👻💅💅💋🍫💥💋💔💅👺🍭"),
 /// #     Ok("Hello world!".to_owned().into_bytes())
 /// # );
-/// emoji256::decode("👊💛💣💣💦🍻💸💦💩💣💚🍼");  // => "Hello world!"
+/// emoji256::decode("🐘👻💅💅💋🍫💥💋💔💅👺🍭");  // => "Hello world!"
 /// # assert_eq!(emoji256::decode("123"), Err(emoji256::FromEmoji256Error::InvalidSrcLength));
 /// emoji256::decode("123");  // => Err(FromEmoji256Error::InvalidSrcLength)
 /// # assert!(emoji256::decode("foo").is_err());
@@ -236,8 +236,8 @@ pub fn decode<T: AsRef<[u8]>>(data: T) -> Result<Vec<u8>, FromEmoji256Error> {
 ///
 /// ```
 /// let mut bytes = [0u8; 4];
-/// # assert_eq!(emoji256::decode_to_slice("💢💟💸💟", &mut bytes as &mut [u8]), Ok(()));
-/// emoji256::decode_to_slice("💢💟💸💟", &mut bytes as &mut [u8]);
+/// # assert_eq!(emoji256::decode_to_slice("💄💁💥💁", &mut bytes as &mut [u8]), Ok(()));
+/// emoji256::decode_to_slice("💄💁💥💁", &mut bytes as &mut [u8]);
 /// assert_eq!(&bytes, b"kiwi");
 /// ```
 pub fn decode_to_slice<T: AsRef<[u8]>>(data: T, out: &mut [u8]) -> Result<(), FromEmoji256Error> {
@@ -278,11 +278,11 @@ mod test {
     fn test_encode_to_slice() {
         let mut output_1 = [0; 4 * 4];
         encode_to_slice(b"kiwi", &mut output_1).unwrap();
-        assert_eq!(&output_1, "💢💟💸💟".as_bytes());
+        assert_eq!(&output_1, "💄💁💥💁".as_bytes());
 
         let mut output_2 = [0; 5 * 4];
         encode_to_slice(b"kiwis", &mut output_2).unwrap();
-        assert_eq!(&output_2, "💢💟💸💟💪".as_bytes());
+        assert_eq!(&output_2, "💄💁💥💁💕".as_bytes());
 
         let mut output_3 = [0; 100];
 
@@ -295,11 +295,11 @@ mod test {
     #[test]
     fn test_decode_to_slice() {
         let mut output_1 = [0; 4];
-        decode_to_slice("💢💟💸💟", &mut output_1).unwrap();
+        decode_to_slice("💄💁💥💁", &mut output_1).unwrap();
         assert_eq!(&output_1, b"kiwi");
 
         let mut output_2 = [0; 5];
-        decode_to_slice("💢💟💸💟💪", &mut output_2).unwrap();
+        decode_to_slice("💄💁💥💁💕", &mut output_2).unwrap();
         assert_eq!(&output_2, b"kiwis");
 
         let mut output_3 = [0; 4];
@@ -313,14 +313,14 @@ mod test {
     #[test]
     #[cfg(feature = "alloc")]
     fn test_encode() {
-        assert_eq!(encode("foobar"), "💜💦💦💘💗💩");
+        assert_eq!(encode("foobar"), "👽💋💋👯👮💔");
     }
 
     #[test]
     #[cfg(feature = "alloc")]
     fn test_decode() {
         assert_eq!(
-            decode("💜💦💦💘💗💩"),
+            decode("👽💋💋👯👮💔"),
             Ok(String::from("foobar").into_bytes())
         );
     }
@@ -328,13 +328,13 @@ mod test {
     #[test]
     #[cfg(feature = "alloc")]
     pub fn test_from_emoji256_okay_str() {
-        assert_eq!(Vec::from_emoji256("💜💦💦💘💗💩").unwrap(), b"foobar");
+        assert_eq!(Vec::from_emoji256("👽💋💋👯👮💔").unwrap(), b"foobar");
     }
 
     #[test]
     #[cfg(feature = "alloc")]
     pub fn test_from_emoji256_okay_bytes() {
-        assert_eq!(Vec::from_emoji256("💜💦💦💘💗💩").unwrap(), b"foobar");
+        assert_eq!(Vec::from_emoji256("👽💋💋👯👮💔").unwrap(), b"foobar");
     }
 
     #[test]
@@ -345,7 +345,7 @@ mod test {
             FromEmoji256Error::InvalidSrcLength
         );
         assert_eq!(
-            Vec::from_emoji256("💜💦💦💘💗💩1").unwrap_err(),
+            Vec::from_emoji256("👽💋💋👯👮💔1").unwrap_err(),
             FromEmoji256Error::InvalidSrcLength
         );
     }
@@ -354,7 +354,7 @@ mod test {
     #[cfg(feature = "alloc")]
     pub fn test_invalid_char() {
         assert_eq!(
-            Vec::from_emoji256("💜💦66ag").unwrap_err(),
+            Vec::from_emoji256("👽💋66ag").unwrap_err(),
             FromEmoji256Error::InvalidEmoji256 { c: '6', index: 2 }
         );
     }
@@ -369,7 +369,7 @@ mod test {
     #[cfg(feature = "alloc")]
     pub fn test_from_emoji256_whitespace() {
         assert_eq!(
-            Vec::from_emoji256("💜💦    💦💘💗💩").unwrap_err(),
+            Vec::from_emoji256("👽💋    💋👯👮💔").unwrap_err(),
             FromEmoji256Error::InvalidEmoji256 { c: ' ', index: 2 }
         );
     }
@@ -377,12 +377,12 @@ mod test {
     #[test]
     pub fn test_from_emoji256_array() {
         assert_eq!(
-            <[u8; 6] as FromEmoji256>::from_emoji256("💜💦💦💘💗💩"),
+            <[u8; 6] as FromEmoji256>::from_emoji256("👽💋💋👯👮💔"),
             Ok([0x66, 0x6f, 0x6f, 0x62, 0x61, 0x72])
         );
 
         assert_eq!(
-            <[u8; 5] as FromEmoji256>::from_emoji256("💜💦💦💘💗💩"),
+            <[u8; 5] as FromEmoji256>::from_emoji256("👽💋💋👯👮💔"),
             Err(FromEmoji256Error::InvalidDestLength)
         );
     }
@@ -392,7 +392,7 @@ mod test {
     fn test_to_emoji256() {
         assert_eq!(
             [0x66, 0x6f, 0x6f, 0x62, 0x61, 0x72].encode_emoji256::<String>(),
-            "💜💦💦💘💗💩".to_string(),
+            "👽💋💋👯👮💔".to_string(),
         );
     }
 }
