@@ -19,7 +19,7 @@
 
 Emoji256 is a binary-to-text encoding scheme for reading hashes and cryptographic keys. By translating text to pictographs, we can use our automatic biological storytelling machinery to grok or even memorize arbritrary byte sequences.
 
-To translate 8-bit values to a table of 256 emojis, emoji256 utilizes a pre-defined lookup table found in [`src/table.rs`](src/table.rs). This table contains a unique emoji for each of the 256 possible combinations of an 8-bit value, ranging from 0 to 255. **The lookup table is still actively being tweaked to reduce biases and increase grok-ability.**
+Each 8-bit value has a unique emoji representation. To translate values to emojis, emoji256 utilizes a pre-defined lookup table found in [`src/table.rs`](src/table.rs). **The lookup table is  actively being tweaked to reduce biases and increase grok-ability. Emoji256 will not be a stable format until the table is frozen with v1.0.**
 
 This Rust crate encodes and decodes data into/from emoji256. It uses the same API as the popular Rust crate, [hex](https://crates.io/crates/hex).
 
